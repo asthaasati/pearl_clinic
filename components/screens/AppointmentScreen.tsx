@@ -15,6 +15,8 @@ import {
   HeartPulse,
   Mail,
   MapPin,
+  MessageSquare,
+  Send,
   Smartphone,
   Stethoscope,
   UserCheck
@@ -853,6 +855,46 @@ END:VCALENDAR`;
                     <span className="text-[9px] text-slate-400">OUR PRIORITY</span>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* INSTANT NOTIFICATION DISPATCH BOX */}
+            <div className="glass-card p-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 space-y-3 text-center print:hidden">
+              <div className="flex items-center justify-center gap-2 text-emerald-400 font-extrabold text-xs uppercase tracking-wider">
+                <MessageSquare className="w-4 h-4" /> Instant Notification Dispatch (Patient & Doctor Desk)
+              </div>
+              <p className="text-xs text-slate-300">
+                Send appointment confirmation pass directly to Patient (+91 {formData.phone}) & Doctor Helpline (+91 9981342401) via WhatsApp, SMS, or Email:
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1">
+                <a
+                  href={`https://wa.me/919981342401?text=${encodeURIComponent(getShareMessageText())}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg transition-transform hover:scale-105"
+                >
+                  <MessageSquare className="w-4 h-4" /> WhatsApp Doctor Desk (+91 9981342401)
+                </a>
+                <a
+                  href={`https://wa.me/91${formData.phone.replace(/\D/g, "")}?text=${encodeURIComponent(getShareMessageText())}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black flex items-center gap-1.5 shadow-lg transition-transform hover:scale-105"
+                >
+                  <Smartphone className="w-4 h-4" /> WhatsApp Patient (+91 {formData.phone})
+                </a>
+                <a
+                  href={`sms:+919981342401?body=${encodeURIComponent(getShareMessageText())}`}
+                  className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold flex items-center gap-1.5 transition-transform hover:scale-105"
+                >
+                  <Send className="w-4 h-4" /> SMS Doctor (+91 9981342401)
+                </a>
+                <a
+                  href={`mailto:pearlclinic.jbp@gmail.com?subject=${encodeURIComponent(`New Appointment: ${appointmentId} - ${formData.patientName}`)}&body=${encodeURIComponent(getShareMessageText())}`}
+                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-transform hover:scale-105 border border-slate-700"
+                >
+                  <Mail className="w-4 h-4" /> Email Clinic Desk
+                </a>
               </div>
             </div>
 
