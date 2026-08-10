@@ -1,5 +1,7 @@
 "use client";
 
+import { API_BASE_URL } from "@/lib/api";
+
 import {
   Ambulance,
   ArrowLeft,
@@ -87,7 +89,7 @@ Email: pearlclinic.jbp@gmail.com`;
 
     // Send payload to backend for automated logging and dispatch
     try {
-      await fetch("http://127.0.0.1:8000/api/messages/direct-query", {
+      await fetch(`${API_BASE_URL}/api/messages/direct-query`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

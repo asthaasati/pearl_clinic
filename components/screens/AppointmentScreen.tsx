@@ -1,5 +1,7 @@
 "use client";
 
+import { API_BASE_URL } from "@/lib/api";
+
 import {
   AlertCircle,
   ArrowLeft,
@@ -166,7 +168,7 @@ export function AppointmentScreen({ initialService, onNavigate }: AppointmentScr
 
       try {
         const res = await fetch(
-          `http://127.0.0.1:8000/api/appointments/booked-slots?date=${encodeURIComponent(
+          `${API_BASE_URL}/api/appointments/booked-slots?date=${encodeURIComponent(
             formData.date
           )}&doctor=${encodeURIComponent(formData.doctor)}`
         );
@@ -217,7 +219,7 @@ export function AppointmentScreen({ initialService, onNavigate }: AppointmentScr
     }
 
     try {
-      await fetch("http://127.0.0.1:8000/api/appointments", {
+      await fetch(`${API_BASE_URL}/api/appointments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
