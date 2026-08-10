@@ -3,11 +3,8 @@
 import {
   CalendarCheck,
   ChevronRight,
-  Instagram,
   Sparkles,
-  UserCheck,
-  Video,
-  Youtube
+  Video
 } from "lucide-react";
 import Image from "next/image";
 import { ReviewsSection } from "../sections/ReviewsSection";

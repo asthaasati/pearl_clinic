@@ -15,9 +15,6 @@ import {
   HeartPulse,
   Mail,
   MapPin,
-  MessageSquare,
-  Phone,
-  Share2,
   Smartphone,
   Stethoscope,
   UserCheck
@@ -29,66 +26,66 @@ interface AppointmentScreenProps {
   onNavigate: (screenId: string) => void;
 }
 
+const ALL_CLINICAL_SERVICES = [
+  {
+    title: "Pediatric General OPD",
+    desc: "Routine pediatric consultations, growth tracking, fever, cold & nutrition guidance",
+    doc: "Dr. Diksha Asati"
+  },
+  {
+    title: "Routine & Catch-Up Vaccination",
+    desc: "Complete IAP immunization schedule with cold-chain maintenance & catch-up doses",
+    doc: "Dr. Diksha Asati"
+  },
+  {
+    title: "PICU & NICU Hospital Admissions",
+    desc: "Emergency coordination & critical care management for severe pediatric illnesses",
+    doc: "Dr. Diksha Asati"
+  },
+  {
+    title: "Growth & Development Assessment",
+    desc: "Child growth milestone tracking, nutritional status & developmental screening",
+    doc: "Dr. Diksha Asati"
+  },
+  {
+    title: "Spirometry & Lung Function Testing (PFT)",
+    desc: "Computerized diagnostic lung volume & airflow capacity measurement",
+    doc: "Dr. Rahul Asati"
+  },
+  {
+    title: "Chronic Cough & Respiratory Allergy Clinic",
+    desc: "Evaluation for persistent cough, allergic rhinitis, post-nasal drip & hyperreactive airways",
+    doc: "Dr. Rahul Asati"
+  },
+  {
+    title: "Sleep & Respiratory Disorders Clinic",
+    desc: "Care for nocturnal breathlessness, sleep apnea, snoring & chronic hypoxia",
+    doc: "Dr. Rahul Asati"
+  },
+  {
+    title: "Bronchoscopy",
+    desc: "Diagnostic & therapeutic airway endoscopy for foreign body, stridor & airway evaluation",
+    doc: "Dr. Rahul / Dr. Diksha"
+  },
+  {
+    title: "Asthma & COPD Care Clinic",
+    desc: "Comprehensive treatment for bronchial asthma, COPD, chest tightness & wheezing",
+    doc: "Dr. Rahul / Dr. Diksha"
+  },
+  {
+    title: "Nebulization & Inhalation Therapy",
+    desc: "Supervised aerosolized bronchodilator therapy for acute bronchospasm & breathlessness",
+    doc: "Dr. Rahul / Dr. Diksha"
+  },
+  {
+    title: "Online Video Consultation",
+    desc: "Virtual OPD consultation from the comfort of your home",
+    doc: "Dr. Diksha / Dr. Rahul"
+  }
+];
+
 export function AppointmentScreen({ initialService, onNavigate }: AppointmentScreenProps) {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
-
-  const ALL_CLINICAL_SERVICES = [
-    {
-      title: "Pediatric General OPD",
-      desc: "Routine pediatric consultations, growth tracking, fever, cold & nutrition guidance",
-      doc: "Dr. Diksha Asati"
-    },
-    {
-      title: "Routine & Catch-Up Vaccination",
-      desc: "Complete IAP immunization schedule with cold-chain maintenance & catch-up doses",
-      doc: "Dr. Diksha Asati"
-    },
-    {
-      title: "PICU & NICU Hospital Admissions",
-      desc: "Emergency coordination & critical care management for severe pediatric illnesses",
-      doc: "Dr. Diksha Asati"
-    },
-    {
-      title: "Growth & Development Assessment",
-      desc: "Child growth milestone tracking, nutritional status & developmental screening",
-      doc: "Dr. Diksha Asati"
-    },
-    {
-      title: "Spirometry & Lung Function Testing (PFT)",
-      desc: "Computerized diagnostic lung volume & airflow capacity measurement",
-      doc: "Dr. Rahul Asati"
-    },
-    {
-      title: "Chronic Cough & Respiratory Allergy Clinic",
-      desc: "Evaluation for persistent cough, allergic rhinitis, post-nasal drip & hyperreactive airways",
-      doc: "Dr. Rahul Asati"
-    },
-    {
-      title: "Sleep & Respiratory Disorders Clinic",
-      desc: "Care for nocturnal breathlessness, sleep apnea, snoring & chronic hypoxia",
-      doc: "Dr. Rahul Asati"
-    },
-    {
-      title: "Bronchoscopy",
-      desc: "Diagnostic & therapeutic airway endoscopy for foreign body, stridor & airway evaluation",
-      doc: "Dr. Rahul / Dr. Diksha"
-    },
-    {
-      title: "Asthma & COPD Care Clinic",
-      desc: "Comprehensive treatment for bronchial asthma, COPD, chest tightness & wheezing",
-      doc: "Dr. Rahul / Dr. Diksha"
-    },
-    {
-      title: "Nebulization & Inhalation Therapy",
-      desc: "Supervised aerosolized bronchodilator therapy for acute bronchospasm & breathlessness",
-      doc: "Dr. Rahul / Dr. Diksha"
-    },
-    {
-      title: "Online Video Consultation",
-      desc: "Virtual OPD consultation from the comfort of your home",
-      doc: "Dr. Diksha / Dr. Rahul"
-    }
-  ];
 
   const initialDoctor = useMemo(() => {
     if (initialService) {
@@ -364,17 +361,6 @@ END:VCALENDAR`;
     link.click();
     document.body.removeChild(link);
   };
-
-  const cleanPatientPhone = formData.phone.replace(/\D/g, "");
-  const patientWhatsappUrl = `https://wa.me/91${cleanPatientPhone || "9981342401"}?text=${encodeURIComponent(
-    getShareMessageText()
-  )}`;
-  const patientSmsUrl = `sms:${formData.phone}?body=${encodeURIComponent(getShareMessageText())}`;
-  const doctorWhatsappUrl = `https://wa.me/919981342401?text=${encodeURIComponent(getShareMessageText())}`;
-  const doctorSmsUrl = `sms:+919981342401?body=${encodeURIComponent(getShareMessageText())}`;
-  const mailToUrl = `mailto:pearlclinic.jbp@gmail.com?subject=${encodeURIComponent(
-    `New Appointment: ${appointmentId} - ${formData.patientName}`
-  )}&body=${encodeURIComponent(getShareMessageText())}`;
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 pb-12">
@@ -871,16 +857,33 @@ END:VCALENDAR`;
             </div>
 
             {/* ACTION BUTTONS */}
-            <div className="flex flex-wrap items-center justify-center gap-4 print:hidden">
+            <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
               <button
                 onClick={() => onNavigate("home")}
-                className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold cursor-pointer"
+                className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold cursor-pointer border border-slate-800"
               >
                 Return to Dashboard
               </button>
+
+              <a
+                href={getGoogleCalendarUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-black shadow-lg shadow-sky-500/20 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
+              >
+                <Calendar className="w-4 h-4" /> Add to Google Calendar
+              </a>
+
+              <button
+                onClick={downloadIcsReminder}
+                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-600/20 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
+              >
+                <Clock className="w-4 h-4" /> Download .ICS Reminder
+              </button>
+
               <button
                 onClick={() => window.print()}
-                className="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black shadow-xl shadow-emerald-500/25 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
+                className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black shadow-xl shadow-emerald-500/25 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
               >
                 <Download className="w-4 h-4" /> Save / Print Pass PDF
               </button>

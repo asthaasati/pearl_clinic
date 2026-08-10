@@ -7,9 +7,7 @@ import {
   CheckCircle2,
   GraduationCap,
   HeartPulse,
-  ShieldCheck,
-  Stethoscope,
-  UserCheck
+  Stethoscope
 } from "lucide-react";
 import Image from "next/image";
 
