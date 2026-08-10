@@ -7,6 +7,9 @@ dist/
 coverage/
 __pycache__/
 *.py[cod]
+*.jpg
+*.jpeg
+*.png
 *.log
 *.tsbuildinfo
 .env
