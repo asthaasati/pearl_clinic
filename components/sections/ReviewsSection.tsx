@@ -161,8 +161,8 @@ export function ReviewsSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Patient Feedback & Testimonials
           </div>
-          <h2 className="text-2xl md:text-3xl font-black text-white">What Patient Say</h2>
-          <p className="text-xs md:text-sm text-slate-400 whitespace-nowrap">
+          <h2 className="text-2xl md:text-3xl font-black text-white">What Patients Say</h2>
+          <p className="text-xs md:text-sm text-slate-400 leading-relaxed max-w-xl">
             Real stories and verified experiences from families cared for by Dr. Diksha Asati & Dr. Rahul Asati.
           </p>
         </div>

@@ -34,7 +34,7 @@ export function DoctorScreen({ onNavigate }: DoctorScreenProps) {
           <Stethoscope className="w-4 h-4 text-sky-400" /> Specialist Medical Consultants
         </div>
         <h1 className="text-3xl md:text-4xl font-black text-white">Our Medical Experts</h1>
-        <p className="text-slate-300 text-xs sm:text-sm md:text-base font-medium max-w-none whitespace-nowrap tracking-tight">
+        <p className="text-slate-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed text-center">
           Dedicated specialist care in Pediatrics, Pediatric Critical Care, and Adult & Childhood Pulmonology at Pearl Clinic, Jabalpur.
         </p>
       </div>

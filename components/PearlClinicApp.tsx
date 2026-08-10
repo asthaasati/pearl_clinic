@@ -234,7 +234,7 @@ export function PearlClinicApp() {
       </header>
 
       {/* Main Multi-Screen Content Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-32 lg:pb-12">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentScreen}
@@ -255,7 +255,7 @@ export function PearlClinicApp() {
       </main>
 
       {/* Mobile Floating Bottom Dock Navigation */}
-      <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-40 lg:hidden w-[92%] max-w-md bg-slate-900/90 backdrop-blur-xl border border-slate-800 p-2 rounded-2xl shadow-2xl flex items-center justify-around">
+      <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden w-[94%] max-w-md bg-slate-900/95 backdrop-blur-2xl border border-slate-800/90 p-2.5 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.85)] flex items-center justify-around">
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = currentScreen === item.id;
@@ -263,19 +263,19 @@ export function PearlClinicApp() {
             <button
               key={item.id}
               onClick={() => handleNavigate(item.id)}
-              className={`p-2 rounded-xl flex flex-col items-center gap-1 transition-all cursor-pointer ${
-                isActive ? "text-sky-400 font-bold scale-110" : "text-slate-400 hover:text-slate-200"
+              className={`px-3 py-1.5 rounded-xl flex flex-col items-center gap-1 transition-all cursor-pointer ${
+                isActive ? "text-sky-400 font-bold scale-105" : "text-slate-400 hover:text-slate-200"
               }`}
             >
               <Icon className="w-5 h-5" />
-              <span className="text-[10px]">{item.label}</span>
+              <span className="text-[10px] leading-none">{item.label}</span>
             </button>
           );
         })}
       </div>
 
       {/* Modern Footer */}
-      <footer className="bg-slate-950 border-t border-slate-900 py-8 text-xs text-slate-500 text-center">
+      <footer className="bg-slate-950 border-t border-slate-900 pt-8 pb-28 lg:pb-8 text-xs text-slate-500 text-center">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
             <Image src="/logo.png" alt="Logo" width={24} height={24} className="object-contain" />

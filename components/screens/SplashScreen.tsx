@@ -96,9 +96,11 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           <p className="text-base md:text-lg text-slate-300 font-medium mb-1">
             Pediatric, Critical Care & Pulmonology Center
           </p>
-          <p className="text-[11px] sm:text-xs md:text-sm text-slate-400 font-medium mb-8 whitespace-nowrap tracking-tight max-w-full overflow-hidden text-ellipsis">
-            Dr. Diksha Asati (MBBS, MD Pediatrics) <span className="text-sky-400 font-semibold">•</span> Dr. Rahul Asati (MBBS, MD Pulmonologist)
-          </p>
+          <div className="text-[11px] sm:text-xs md:text-sm text-slate-400 font-medium mb-8 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 text-center max-w-full px-2 leading-snug">
+            <span>Dr. Diksha Asati (MBBS, MD Pediatrics)</span>
+            <span className="hidden sm:inline text-sky-400 font-semibold">•</span>
+            <span>Dr. Rahul Asati (MBBS, MD Pulmonologist)</span>
+          </div>
         </motion.div>
 
         {/* Progress Bar */}
