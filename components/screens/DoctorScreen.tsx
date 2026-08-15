@@ -62,7 +62,7 @@ export function DoctorScreen({ onNavigate }: DoctorScreenProps) {
             </div>
 
             <h2 className="text-3xl md:text-4xl font-black text-white">
-              Dr. Diksha Asati <span className="text-slate-400 text-lg font-medium block md:inline">(MBBS, MD Pediatrics)</span>
+              Dr. Diksha Asati <span className="text-slate-400 text-lg font-medium block md:inline">(MBBS, MD Pediatrics, IDPCCM)</span>
             </h2>
 
             <p className="text-slate-300 text-sm md:text-base leading-relaxed">
@@ -72,7 +72,7 @@ export function DoctorScreen({ onNavigate }: DoctorScreenProps) {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
               <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-center">
                 <div className="text-xs text-slate-400">Qualifications</div>
-                <div className="text-sm font-bold text-sky-400">MD, MBBS</div>
+                <div className="text-sm font-bold text-sky-400">MBBS, MD, IDPCCM</div>
               </div>
               <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-center">
                 <div className="text-xs text-slate-400">Specialization</div>
@@ -112,8 +112,8 @@ export function DoctorScreen({ onNavigate }: DoctorScreenProps) {
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-1 shrink-0" />
                 <div>
-                  <strong className="text-white text-sm block">Fellowship in Pediatric Critical Care (PICU/NICU)</strong>
-                  <span className="text-xs text-slate-400">Specialized training in invasive ventilation and emergency triage.</span>
+                  <strong className="text-white text-sm block">Fellowship in Pediatric Critical Care Medicine (IDPCCM)</strong>
+                  <span className="text-xs text-slate-400">Specialized training in invasive ventilation, PICU/NICU pathways, and emergency triage.</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
@@ -174,17 +174,17 @@ export function DoctorScreen({ onNavigate }: DoctorScreenProps) {
             </div>
 
             <h2 className="text-3xl md:text-4xl font-black text-white">
-              Dr. Rahul Asati <span className="text-slate-400 text-lg font-medium block md:inline">(MBBS, MD Pulmonologist)</span>
+              Dr. Rahul Asati <span className="text-slate-400 text-lg font-medium block md:inline">(MBBS, MD, Pulmonologist, Critical Care Specialist)</span>
             </h2>
 
             <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-              Consultant Pulmonologist & Chest Specialist at Pearl Clinic. Expert in comprehensive pulmonary diagnostics, Bronchoscopy, Spirometry & Lung Function Testing, Asthma & COPD care, allergic respiratory disorders, and sleep apnea evaluation.
+              Consultant Pulmonologist & Critical Care Specialist at Pearl Clinic. Expert in comprehensive pulmonary diagnostics, Bronchoscopy, Spirometry & Lung Function Testing, Asthma & COPD care, allergic respiratory disorders, and sleep apnea evaluation.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
               <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-center">
                 <div className="text-xs text-slate-400">Qualifications</div>
-                <div className="text-sm font-bold text-teal-400">MD, MBBS</div>
+                <div className="text-xs font-bold text-teal-400">MBBS, MD, Pulmonologist, Critical Care Specialist</div>
               </div>
               <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-center">
                 <div className="text-xs text-slate-400">Specialization</div>

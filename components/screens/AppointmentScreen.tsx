@@ -263,7 +263,7 @@ Patient Phone: ${formData.phone}
 Notes/Symptoms: ${formData.notes || "N/A"}
 
 📍 CLINIC LOCATION:
-Pearl Clinic, Scheme No 54, Vijay Nagar, Jabalpur, MP 482002
+Pearl Clinic, Kachanr City Road, Opposite Children Book House, Vijay Nagar, Jabalpur, MP 482002
 Clinic Helpline: +91 9981342401
 Clinic Email: pearlclinic.jbp@gmail.com`;
   };
@@ -272,7 +272,7 @@ Clinic Email: pearlclinic.jbp@gmail.com`;
   const getGoogleCalendarUrl = () => {
     const title = `Pearl Clinic Appointment: ${formData.patientName} with ${formData.doctor}`;
     const details = getShareMessageText();
-    const location = "Pearl Clinic, Scheme No 54, Vijay Nagar, Jabalpur, MP 482002";
+    const location = "Pearl Clinic, Kachanr City Road, Opposite Children Book House, Vijay Nagar, Jabalpur, MP 482002";
 
     const dateParts = formData.date.split("-");
     const timeMatch = formData.timeSlot.match(/(\d+):(\d+)\s*(AM|PM)/i);

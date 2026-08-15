@@ -46,7 +46,7 @@ const servicesData: ServiceItem[] = [
     doctor: "Dr. Diksha Asati",
     icon: Stethoscope,
     summary: "Routine pediatric consultations, growth tracking, fever, cold, diarrhea, and nutrition counseling.",
-    detail: "Comprehensive outpatient examination by Dr. Diksha Asati (MBBS, MD (Pediatrics)). Includes physical assessment, weight/height percentile tracking, dietary advice, and prescription guidance.",
+    detail: "Comprehensive outpatient examination by Dr. Diksha Asati (MBBS, MD Pediatrics). Includes physical assessment, weight/height percentile tracking, dietary advice, and prescription guidance.",
     timings: "Mon - Sat OPD Hours",
     requirements: ["Previous medical records (if any)", "Vaccination card"],
     recommendedAge: "0 - 18 Years"
@@ -309,7 +309,7 @@ export function ServicesScreen({ onNavigate }: ServicesScreenProps) {
                 </div>
                 <div>
                   <h2 className="text-xl md:text-2xl font-black text-white">Pediatric Services</h2>
-                  <p className="text-xs text-sky-400 font-semibold">Led by Dr. Diksha Asati (MBBS, MD (Pediatrics))</p>
+                  <p className="text-xs text-sky-400 font-semibold">Led by Dr. Diksha Asati (MBBS, MD Pediatrics)</p>
                 </div>
               </div>
             </div>
@@ -330,7 +330,7 @@ export function ServicesScreen({ onNavigate }: ServicesScreenProps) {
                 </div>
                 <div>
                   <h2 className="text-xl md:text-2xl font-black text-white">Pulmonology Services</h2>
-                  <p className="text-xs text-teal-400 font-semibold">Led by Dr. Rahul Asati (MBBS, MD - Pulmonologist)</p>
+                  <p className="text-xs text-teal-400 font-semibold">Led by Dr. Rahul Asati (MBBS, MD, Pulmonologist, Critical Care Specialist)</p>
                 </div>
               </div>
             </div>

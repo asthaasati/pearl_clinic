@@ -36,8 +36,8 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
               Gentle Pediatric & Advanced <span className="shimmer-text">Pulmonology Care</span>
             </h1>
 
-            <p className="text-slate-300 text-base md:text-lg leading-relaxed">
-              Super-specialty clinical care by <strong className="text-white">Dr. Diksha Asati</strong> (MBBS, MD Pediatrics) & <strong className="text-white">Dr. Rahul Asati</strong> (MBBS, MD Pulmonologist). Comprehensive OPD, PICU/NICU, Spirometry (PFT), Asthma & COPD care, and Sleep Disorders.
+            <p className="text-slate-200 text-lg md:text-xl font-bold tracking-wide">
+              Dr. Diksha Asati & Dr. Rahul Asati
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -109,7 +109,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Dr. Diksha Asati</h3>
-                <p className="text-xs text-sky-400 font-semibold">MBBS, MD Pediatrics</p>
+                <p className="text-xs text-sky-400 font-semibold">MBBS, MD Pediatrics, IDPCCM</p>
               </div>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">
@@ -136,7 +136,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Dr. Rahul Asati</h3>
-                <span className="text-xs text-teal-400 font-semibold">MBBS, MD Pulmonologist</span>
+                <span className="text-xs text-teal-400 font-semibold">MBBS, MD, Pulmonologist, Critical Care Specialist</span>
               </div>
             </div>
             <p className="text-xs text-slate-300 leading-relaxed">

@@ -7,6 +7,7 @@ import {
   Instagram,
   MapPin,
   Menu,
+  MessageCircle,
   Moon,
   Phone,
   Stethoscope,
@@ -91,13 +92,13 @@ export function PearlClinicApp() {
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans placeholder-grid relative selection:bg-sky-500 selection:text-white">
       {/* Top Glass Header Navigation */}
       <header className="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-          {/* Brand Logo & Title */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+          {/* Brand Logo & Title with Full Form */}
           <div
             onClick={() => handleNavigate("home")}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div className="relative w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1 group-hover:border-sky-500/50 transition-colors">
+            <div className="relative w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1 group-hover:border-sky-500/50 transition-colors shrink-0">
               <Image
                 src="/logo.png"
                 alt="Pearl Clinic Logo"
@@ -107,16 +108,18 @@ export function PearlClinicApp() {
               />
             </div>
 
-            <div>
-              <span className="font-black text-lg md:text-xl text-white tracking-tight shimmer-text whitespace-nowrap block">
+            <div className="space-y-0.5">
+              <span className="font-black text-base sm:text-lg md:text-xl text-white tracking-tight shimmer-text whitespace-nowrap block">
                 PEARL CLINIC
               </span>
-              <p className="text-[11px] text-slate-400 font-medium whitespace-nowrap">Vijay Nagar, Jabalpur</p>
+              <p className="text-[10px] sm:text-[11px] text-sky-400 font-semibold tracking-wide whitespace-nowrap">
+                Paediatric Excellence And Respiratory Life
+              </p>
             </div>
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800">
+          <nav className="hidden xl:flex items-center gap-1 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentScreen === item.id;
@@ -124,7 +127,7 @@ export function PearlClinicApp() {
                 <button
                   key={item.id}
                   onClick={() => handleNavigate(item.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer ${
+                  className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                     isActive
                       ? "bg-gradient-to-r from-sky-500 to-emerald-500 text-white shadow-lg shadow-sky-500/20"
                       : "text-slate-300 hover:text-white hover:bg-slate-800/60"
@@ -139,12 +142,24 @@ export function PearlClinicApp() {
 
           {/* Header Action Buttons */}
           <div className="flex items-center gap-2">
+            {/* WhatsApp Header Button */}
+            <a
+              href="https://wa.me/919981342401"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-white border border-emerald-500/30 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
+              title="Chat on WhatsApp +91 9981342401"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <span className="hidden sm:inline">+91 9981342401</span>
+            </a>
+
             {/* Theme Toggle Button (Light/Dark Mode) */}
             <button
               onClick={toggleTheme}
               title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
               aria-label="Toggle Theme"
-              className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-md"
+              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-md"
             >
               {theme === "dark" ? (
                 <Sun className="w-4 h-4 text-amber-400" />
@@ -153,19 +168,20 @@ export function PearlClinicApp() {
               )}
             </button>
 
-            {/* Emergency Hotline Button */}
+            {/* Emergency Phone Button */}
             <a
               href="tel:+919981342401"
-              className="px-4 py-2.5 rounded-xl bg-rose-500/10 hover:bg-rose-500 text-rose-400 hover:text-white border border-rose-500/30 text-xs font-bold transition-all flex items-center gap-1.5"
+              className="px-3 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500 text-rose-400 hover:text-white border border-rose-500/30 text-xs font-bold transition-all flex items-center gap-1.5"
+              title="Call Helpline +91 9981342401"
             >
               <Phone className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">+91 9981342401</span>
+              <span className="hidden md:inline">+91 9981342401</span>
             </a>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white cursor-pointer"
+              className="xl:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -174,11 +190,24 @@ export function PearlClinicApp() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden p-4 bg-slate-950 border-b border-slate-800 space-y-3">
+          <div className="xl:hidden p-4 bg-slate-950 border-b border-slate-800 space-y-3">
             <div className="flex items-center gap-2 p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
               <Video className="w-4 h-4" />
               <span>Online Consultation Available</span>
             </div>
+
+            {/* WhatsApp Link in Mobile Menu */}
+            <a
+              href="https://wa.me/919981342401"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-xs font-bold text-emerald-400 flex items-center justify-between"
+            >
+              <span className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4 text-emerald-400" /> WhatsApp +91 9981342401
+              </span>
+              <span>↗</span>
+            </a>
 
             {/* Mobile Theme Toggle */}
             <button
@@ -193,6 +222,7 @@ export function PearlClinicApp() {
                 {theme === "dark" ? "Switch Light" : "Switch Dark"}
               </span>
             </button>
+
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentScreen === item.id;
@@ -211,24 +241,6 @@ export function PearlClinicApp() {
                 </button>
               );
             })}
-            <div className="flex items-center justify-around pt-2 border-t border-slate-900">
-              <a
-                href="https://youtube.com/@dikshaasati8061?si=FjGfiKMdlvIbM_Pf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-red-400 font-semibold"
-              >
-                <Youtube className="w-4 h-4 text-red-500" /> YouTube
-              </a>
-              <a
-                href="https://www.instagram.com/paeditrust?igsh=MWw2aGs3enRzdGlqeQ=="
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-pink-400 font-semibold"
-              >
-                <Instagram className="w-4 h-4 text-pink-500" /> Instagram
-              </a>
-            </div>
           </div>
         )}
       </header>
@@ -253,6 +265,18 @@ export function PearlClinicApp() {
           </motion.div>
         </AnimatePresence>
       </main>
+
+      {/* Floating WhatsApp Action Button on Every Page */}
+      <a
+        href="https://wa.me/919981342401"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-50 p-3.5 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-2xl shadow-emerald-500/50 flex items-center gap-2 font-bold text-xs transition-all transform hover:scale-110 group cursor-pointer border border-emerald-400/40"
+        title="Chat on WhatsApp (+91 9981342401)"
+      >
+        <MessageCircle className="w-5 h-5 fill-white text-emerald-500" />
+        <span className="hidden sm:inline font-extrabold pr-1">WhatsApp Chat</span>
+      </a>
 
       {/* Mobile Floating Bottom Dock Navigation */}
       <div className="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden w-[94%] max-w-md bg-slate-900/95 backdrop-blur-2xl border border-slate-800/90 p-2.5 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.85)] flex items-center justify-around">
@@ -279,28 +303,17 @@ export function PearlClinicApp() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
             <Image src="/logo.png" alt="Logo" width={24} height={24} className="object-contain" />
-            <span className="font-bold text-slate-300">Pearl Clinic</span> — Pediatrics & Pulmonology Care
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-semibold">
-              <Video className="w-3 h-3" /> Online Consultation Available
-            </span>
+            <span className="font-bold text-slate-300">Pearl Clinic</span> — Paediatric Excellence And Respiratory Life
           </div>
 
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <a
-              href="https://youtube.com/@dikshaasati8061?si=FjGfiKMdlvIbM_Pf"
+              href="https://wa.me/919981342401"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-slate-400 hover:text-red-400 font-semibold transition-colors"
+              className="inline-flex items-center gap-1 text-emerald-400 hover:underline font-semibold"
             >
-              <Youtube className="w-4 h-4 text-red-500" /> YouTube
-            </a>
-            <a
-              href="https://www.instagram.com/paeditrust?igsh=MWw2aGs3enRzdGlqeQ=="
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-slate-400 hover:text-pink-400 font-semibold transition-colors"
-            >
-              <Instagram className="w-4 h-4 text-pink-500" /> Instagram (@paeditrust)
+              <MessageCircle className="w-3.5 h-3.5" /> WhatsApp +91 9981342401
             </a>
             <a
               href="https://maps.app.goo.gl/aUikgA6Swf9QxvSUA"
@@ -308,7 +321,7 @@ export function PearlClinicApp() {
               rel="noopener noreferrer"
               className="text-sky-400 hover:underline font-semibold"
             >
-              Vijay Nagar, Jabalpur 📍
+              Kachanr City Road, Opposite Children Book House, Vijay Nagar, Jabalpur 📍
             </a>
           </div>
 

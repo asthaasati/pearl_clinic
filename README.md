@@ -1,6 +1,6 @@
 # Pearl Clinic
 
-Production-ready single-page application for Pearl Clinic, Vijay Nagar, Jabalpur, led by Dr. Diksha Asati, MBBS, MD (Pediatrics), IDPCCM.
+Production-ready application for Pearl Clinic (Paediatric Excellence And Respiratory Life Clinic), Kachanr City Road, Opposite Children Book House, Vijay Nagar, Jabalpur, led by Dr. Diksha Asati, MBBS, MD Pediatrics, IDPCCM and Dr. Rahul Asati, MBBS, MD Pulmonologist.
 
 ## Stack
 

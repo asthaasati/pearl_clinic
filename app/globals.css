@@ -288,3 +288,29 @@ html.light textarea::placeholder {
   color: #94a3b8 !important;
 }
 
+/* High Contrast Emergency Banner Fix for Light and Dark Modes */
+.emergency-banner,
+html.light .emergency-banner {
+  background: linear-gradient(135deg, #881337 0%, #0f172a 50%, #881337 100%) !important;
+  border-color: rgba(244, 63, 94, 0.4) !important;
+}
+
+html.light .emergency-banner .text-white,
+.emergency-banner .text-white {
+  color: #ffffff !important;
+}
+
+html.light .emergency-banner .text-rose-200,
+html.light .emergency-banner .text-rose-300,
+html.light .emergency-banner .text-rose-400,
+.emergency-banner .text-rose-200,
+.emergency-banner .text-rose-300,
+.emergency-banner .text-rose-400 {
+  color: #fecdd3 !important;
+}
+
+html.light .emergency-banner a,
+.emergency-banner a {
+  color: #ffffff !important;
+}
+
