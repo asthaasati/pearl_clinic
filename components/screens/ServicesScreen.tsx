@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Activity,
   ArrowLeft,
   Baby,
   CalendarCheck,
@@ -9,7 +8,6 @@ import {
   ChevronRight,
   Clock,
   CloudFog,
-  HeartPulse,
   Hospital,
   Info,
   Microscope,

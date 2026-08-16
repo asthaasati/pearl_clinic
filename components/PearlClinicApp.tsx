@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   CalendarCheck,
   Home,
-  Instagram,
   MapPin,
   Menu,
   MessageCircle,
@@ -14,8 +13,7 @@ import {
   Sun,
   UserCheck,
   Video,
-  X,
-  Youtube
+  X
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
