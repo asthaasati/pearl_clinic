@@ -8,12 +8,17 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock,
+  CloudFog,
   HeartPulse,
   Hospital,
   Info,
+  Microscope,
   Search,
+  SearchCheck,
+  Sparkles,
   Stethoscope,
   Syringe,
+  Wind,
   X
 } from "lucide-react";
 import React, { useState } from "react";
@@ -80,7 +85,7 @@ const servicesData: ServiceItem[] = [
     title: "Bronchoscopy",
     category: "Pediatric",
     doctor: "Dr. Diksha Asati & Dr. Rahul Asati",
-    icon: HeartPulse,
+    icon: SearchCheck,
     summary: "Advanced diagnostic airway endoscopy for foreign body inhalation, noisy breathing, or chronic collapse.",
     detail: "Specialized procedure to evaluate congenital airway anomalies, unexplained stridor/wheeze, or accidental peanut/toy foreign body aspiration in infants and children.",
     timings: "By Appointment / Emergency",
@@ -106,7 +111,7 @@ const servicesData: ServiceItem[] = [
     title: "Spirometry & Lung Function Testing (PFT)",
     category: "Pulmonology",
     doctor: "Dr. Rahul Asati",
-    icon: Activity,
+    icon: Wind,
     summary: "Computerized diagnostic lung volume & airflow capacity measurement for breathlessness and wheezing.",
     detail: "Advanced pulmonary function testing (PFT) conducted under Dr. Rahul Asati (MBBS, MD - Pulmonologist) to evaluate lung volume, airway obstruction, and bronchodilator reversibility.",
     timings: "Mon - Sat OPD Hours",
@@ -118,7 +123,7 @@ const servicesData: ServiceItem[] = [
     title: "Bronchoscopy",
     category: "Pulmonology",
     doctor: "Dr. Rahul Asati & Dr. Diksha Asati",
-    icon: HeartPulse,
+    icon: Microscope,
     summary: "Diagnostic & therapeutic airway endoscopy for chronic cough, localized wheezing, airway lesions, or foreign body evaluation.",
     detail: "Flexible bronchoscopy procedure conducted by senior pulmonologist to directly visualize tracheobronchial tree, evaluate persistent airway obstruction, and perform diagnostic sampling.",
     timings: "By Appointment / Emergency",
@@ -130,7 +135,7 @@ const servicesData: ServiceItem[] = [
     title: "Asthma & COPD Care Clinic",
     category: "Pulmonology",
     doctor: "Dr. Rahul Asati & Dr. Diksha Asati",
-    icon: Activity,
+    icon: Stethoscope,
     summary: "Comprehensive treatment for bronchial asthma, COPD, chest tightness, and recurrent wheezing.",
     detail: "In-depth respiratory screening, trigger identification, customized inhaler action plans, and peak flow monitoring by Pulmonology experts.",
     timings: "Daily OPD Hours",
@@ -142,7 +147,7 @@ const servicesData: ServiceItem[] = [
     title: "Chronic Cough & Respiratory Allergy Clinic",
     category: "Pulmonology",
     doctor: "Dr. Rahul Asati",
-    icon: HeartPulse,
+    icon: Sparkles,
     summary: "Diagnostic evaluation for persistent cough, allergic rhinitis, post-nasal drip, and hyperreactive airways.",
     detail: "Specialized clinic addressing chronic unexplained cough, seasonal respiratory allergies, and hyperreactive airway disease.",
     timings: "Mon - Sat OPD Hours",
@@ -154,7 +159,7 @@ const servicesData: ServiceItem[] = [
     title: "Nebulization & Inhalation Therapy",
     category: "Pulmonology",
     doctor: "Dr. Rahul Asati & Dr. Diksha Asati",
-    icon: Syringe,
+    icon: CloudFog,
     summary: "Supervised aerosolized bronchodilator therapy for acute bronchospasm and severe breathlessness.",
     detail: "Immediate clinical nebulization setup using medical-grade nebulizers, mask sizing, and oxygenation support.",
     timings: "OPD & Emergency Hours",
@@ -325,8 +330,8 @@ export function ServicesScreen({ onNavigate }: ServicesScreenProps) {
           <section className="space-y-6">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20">
-                  <Activity className="w-5 h-5" />
+                <div className="p-2.5 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/20 text-xl flex items-center justify-center">
+                  🫁
                 </div>
                 <div>
                   <h2 className="text-xl md:text-2xl font-black text-white">Pulmonology Services</h2>

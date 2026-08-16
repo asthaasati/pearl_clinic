@@ -67,7 +67,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight tracking-tight">
-              Gentle Pediatric & Advanced <span className="shimmer-text">Pulmonology Care</span>
+              Gentle Paediatric and Pulmonary Care
             </h1>
 
             <p className="text-slate-200 text-lg md:text-xl font-bold tracking-wide">
