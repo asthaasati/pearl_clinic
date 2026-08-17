@@ -268,101 +268,7 @@ Clinic Helpline: +91 9981342401
 Clinic Email: pearlclinic.jbp@gmail.com`;
   };
 
-  // Google Calendar URL generation explicitly in IST (ctz=Asia/Kolkata) with 10-min alarm & add=pearlclinic.jbp@gmail.com
-  const getGoogleCalendarUrl = () => {
-    const title = `Pearl Clinic Appointment: ${formData.patientName} with ${formData.doctor}`;
-    const details = getShareMessageText();
-    const location = "Pearl Clinic, Kachanr City Road, Opposite Children Book House, Vijay Nagar, Jabalpur, MP 482002";
 
-    const dateParts = formData.date.split("-");
-    const timeMatch = formData.timeSlot.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    let hours = 10;
-    let mins = 0;
-    if (timeMatch) {
-      hours = parseInt(timeMatch[1], 10);
-      mins = parseInt(timeMatch[2], 10);
-      if (timeMatch[3].toUpperCase() === "PM" && hours < 12) hours += 12;
-      if (timeMatch[3].toUpperCase() === "AM" && hours === 12) hours = 0;
-    }
-    const year = dateParts[0];
-    const month = dateParts[1];
-    const day = dateParts[2];
-
-    const pad = (n: number) => (n < 10 ? "0" + n : "" + n);
-    const startStr = `${year}${month}${day}T${pad(hours)}${pad(mins)}00`;
-    const endMins = (mins + 30) % 60;
-    const endHours = hours + Math.floor((mins + 30) / 60);
-    const endStr = `${year}${month}${day}T${pad(endHours)}${pad(endMins)}00`;
-
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
-      title
-    )}&dates=${startStr}/${endStr}&ctz=Asia/Kolkata&details=${encodeURIComponent(
-      details
-    )}&location=${encodeURIComponent(location)}&add=pearlclinic.jbp@gmail.com`;
-  };
-
-  // Download .ics file in IST (Asia/Kolkata) with embedded 10-minute alarm notification
-  const downloadIcsReminder = () => {
-    const title = `Pearl Clinic Appointment - ${formData.patientName}`;
-    const details = `Appointment Code: ${appointmentId}\\nDoctor: ${formData.doctor}\\nService: ${formData.service}\\nPatient: ${formData.patientName} (${formData.patientAge})\\nPhone: ${formData.phone}\\nTimezone: IST (Indian Standard Time, Asia/Kolkata)\\nClinic Helpline: +91 9981342401\\nEmail: pearlclinic.jbp@gmail.com`;
-
-    const dateParts = formData.date.split("-");
-    const timeMatch = formData.timeSlot.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    let hours = 10;
-    let mins = 0;
-    if (timeMatch) {
-      hours = parseInt(timeMatch[1], 10);
-      mins = parseInt(timeMatch[2], 10);
-      if (timeMatch[3].toUpperCase() === "PM" && hours < 12) hours += 12;
-      if (timeMatch[3].toUpperCase() === "AM" && hours === 12) hours = 0;
-    }
-
-    const pad = (n: number) => (n < 10 ? "0" + n : "" + n);
-    const dtStart = `${dateParts[0]}${dateParts[1]}${dateParts[2]}T${pad(hours)}${pad(mins)}00`;
-    const endMins = (mins + 30) % 60;
-    const endHours = hours + Math.floor((mins + 30) / 60);
-    const dtEnd = `${dateParts[0]}${dateParts[1]}${dateParts[2]}T${pad(endHours)}${pad(endMins)}00`;
-
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Pearl Clinic Jabalpur//Appointment Calendar//EN
-X-WR-TIMEZONE:Asia/Kolkata
-BEGIN:VTIMEZONE
-TZID:Asia/Kolkata
-X-LIC-LOCATION:Asia/Kolkata
-BEGIN:STANDARD
-TZOFFSETFROM:+0530
-TZOFFSETTO:+0530
-TZNAME:IST
-DTSTART:19700101T000000
-END:STANDARD
-END:VTIMEZONE
-BEGIN:VEVENT
-UID:${appointmentId}@pearlclinic.in
-DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").split(".")[0]}Z
-DTSTART;TZID=Asia/Kolkata:${dtStart}
-DTEND;TZID=Asia/Kolkata:${dtEnd}
-SUMMARY:${title}
-DESCRIPTION:${details}
-LOCATION:Pearl Clinic, Scheme No 54, Vijay Nagar, Jabalpur, MP 482002
-ORGANIZER;CN=Pearl Clinic Desk:mailto:pearlclinic.jbp@gmail.com
-BEGIN:VALARM
-TRIGGER:-PT10M
-ACTION:DISPLAY
-DESCRIPTION:10-Minute IST Alarm Notification: Upcoming Pearl Clinic Appointment with ${formData.doctor}
-END:VALARM
-END:VEVENT
-END:VCALENDAR`;
-
-    const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", `Pearl_Clinic_Appointment_${appointmentId}.ics`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 pb-12">
@@ -685,22 +591,49 @@ END:VCALENDAR`;
         {/* STEP 4: PRINTABLE CONFIRMATION RECEIPT TEMPLATE (Matching appointment confirmation receipt.png) */}
         {step === 4 && (
           <div className="space-y-6">
+            {/* HIGHLIGHTED POP-UP / ALERT CALLOUT FOR DISPATCHING APPOINTMENT & SCREENSHOT REQUIREMENT */}
+            <div className="space-y-3 print:hidden">
+              {/* Dispatch Action Prompt */}
+              <div className="p-4.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-emerald-500/20 to-sky-500/20 border-2 border-emerald-500/50 shadow-xl space-y-2 text-left animate-pulse">
+                <div className="flex items-center gap-2 text-emerald-400 font-black text-sm uppercase tracking-wide">
+                  <AlertCircle className="w-5 h-5 text-amber-400 shrink-0" />
+                  <span>ACTION REQUIRED: CLICK BUTTONS BELOW TO SEND APPOINTMENT PASS</span>
+                </div>
+                <p className="text-xs text-slate-100 font-semibold leading-relaxed">
+                  Your appointment slot is reserved! <strong className="text-emerald-400 underline">Please click on the WhatsApp, SMS, or Email buttons below</strong> to immediately dispatch and send your booked appointment details to Doctor Desk & Patient phone!
+                </p>
+              </div>
+
+              {/* Hospital Receipt Screenshot / Print Warning */}
+              <div className="p-4 rounded-2xl bg-sky-500/10 border-2 border-sky-500/40 shadow-md flex items-start gap-3 text-left">
+                <CheckCircle2 className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <h4 className="text-xs font-black text-sky-400 uppercase tracking-wider">
+                    📌 MANDATORY HOSPITAL / CLINIC VISIT INSTRUCTION
+                  </h4>
+                  <p className="text-xs text-slate-200 font-semibold leading-relaxed">
+                    Please bring a <span className="bg-sky-500 text-white keep-text-white px-2 py-0.5 rounded font-extrabold shadow-sm">Screenshot</span> or <span className="bg-emerald-500 text-slate-950 px-2 py-0.5 rounded font-extrabold shadow-sm">Printed Copy</span> of this Appointment Confirmation Pass when visiting Pearl Clinic Hospital.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {/* PRINTABLE CARD CONTAINER */}
             <div id="printable-receipt" className="max-w-2xl mx-auto rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl">
               {/* Top Dark Header */}
-              <div className="bg-[#0b1329] p-6 text-center space-y-2 border-b border-slate-800">
+              <div className="receipt-dark-header bg-[#0b1329] p-6 text-center space-y-2 border-b border-slate-800">
                 <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto mb-2">
                   <CheckCircle2 className="w-8 h-8 text-emerald-400" />
                 </div>
 
                 <div className="flex items-center justify-center gap-3">
                   <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-sky-400" />
-                  <h2 className="text-2xl font-black text-white uppercase tracking-wider">APPOINTMENT CONFIRMED!</h2>
+                  <h2 className="text-2xl font-black text-white keep-text-white uppercase tracking-wider">APPOINTMENT CONFIRMED!</h2>
                   <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-sky-400" />
                 </div>
 
                 <p className="text-xs text-sky-400 font-semibold">
-                  Pass Code: <span className="font-extrabold text-white">{appointmentId}</span>{" "}
+                  Pass Code: <span className="font-extrabold text-white keep-text-white">{appointmentId}</span>{" "}
                   <span className="text-emerald-400 font-bold">(Slot Locked in IST)</span>
                 </p>
               </div>
@@ -804,10 +737,11 @@ END:VCALENDAR`;
                 {/* Important Notes Box */}
                 <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 text-left space-y-2 text-xs">
                   <h4 className="font-extrabold text-emerald-800 uppercase tracking-wider text-[11px]">IMPORTANT NOTES</h4>
-                  <ul className="space-y-1 text-slate-700 text-[11px] leading-relaxed">
-                    <li>• Please arrive a few minutes early for a smooth check-in.</li>
-                    <li>• Carry any previous medical reports or prescriptions, if any.</li>
-                    <li>• In case you are unable to attend, please inform us in advance.</li>
+                  <ul className="space-y-1.5 text-slate-700 text-[11px] leading-relaxed">
+                    <li>• 📸 <strong>MANDATORY:</strong> Please bring a screenshot or printout of this appointment confirmation receipt when coming to the hospital / clinic.</li>
+                    <li>• Please arrive 5-10 minutes prior to your slot time for smooth check-in.</li>
+                    <li>• Carry any previous medical reports, prescriptions, or vaccination records if available.</li>
+                    <li>• In case you need to reschedule or cancel, please inform clinic desk via WhatsApp or Call.</li>
                   </ul>
                 </div>
 
@@ -823,47 +757,47 @@ END:VCALENDAR`;
               </div>
 
               {/* Bottom Feature Strip (Dark Footer) */}
-              <div className="bg-[#070e20] p-4 text-white border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-3 text-[10px] font-semibold">
+              <div className="receipt-dark-footer bg-[#070e20] p-4 text-white keep-text-white border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-3 text-[10px] font-semibold">
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-sky-400 shrink-0" />
                   <div>
-                    <span className="block font-bold text-slate-200">IST TIMEZONE</span>
-                    <span className="text-[9px] text-slate-400">& 10-Min Alarm Sync</span>
+                    <span className="block font-bold text-slate-200 keep-text-slate-200">IST TIMEZONE</span>
+                    <span className="text-[9px] text-slate-400 keep-text-slate-300">& 10-Min Alarm Sync</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                   <div>
-                    <span className="block font-bold text-slate-200">YOUR SLOT IS</span>
-                    <span className="text-[9px] text-slate-400">LOCKED & CONFIRMED</span>
+                    <span className="block font-bold text-slate-200 keep-text-slate-200">YOUR SLOT IS</span>
+                    <span className="text-[9px] text-slate-400 keep-text-slate-300">LOCKED & CONFIRMED</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <Headset className="w-4 h-4 text-amber-400 shrink-0" />
                   <div>
-                    <span className="block font-bold text-slate-200">WE ARE HERE TO</span>
-                    <span className="text-[9px] text-slate-400">HELP YOU</span>
+                    <span className="block font-bold text-slate-200 keep-text-slate-200">WE ARE HERE TO</span>
+                    <span className="text-[9px] text-slate-400 keep-text-slate-300">HELP YOU</span>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <HeartPulse className="w-4 h-4 text-rose-400 shrink-0" />
                   <div>
-                    <span className="block font-bold text-slate-200">YOUR HEALTH IS</span>
-                    <span className="text-[9px] text-slate-400">OUR PRIORITY</span>
+                    <span className="block font-bold text-slate-200 keep-text-slate-200">YOUR HEALTH IS</span>
+                    <span className="text-[9px] text-slate-400 keep-text-slate-300">OUR PRIORITY</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* INSTANT NOTIFICATION DISPATCH BOX */}
-            <div className="glass-card p-5 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 space-y-3 text-center print:hidden">
-              <div className="flex items-center justify-center gap-2 text-emerald-400 font-extrabold text-xs uppercase tracking-wider">
+            <div className="glass-card p-5 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 space-y-3 text-center print:hidden shadow-lg">
+              <div className="flex items-center justify-center gap-2 text-emerald-400 font-black text-xs uppercase tracking-wider">
                 <MessageSquare className="w-4 h-4" /> Instant Notification Dispatch (Patient & Doctor Desk)
               </div>
-              <p className="text-xs text-slate-300">
+              <p className="text-xs text-slate-200 font-medium">
                 Send appointment confirmation pass directly to Patient (+91 {formData.phone}) & Doctor Helpline (+91 9981342401) via WhatsApp, SMS, or Email:
               </p>
               <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1">
@@ -871,7 +805,7 @@ END:VCALENDAR`;
                   href={`https://wa.me/919981342401?text=${encodeURIComponent(getShareMessageText())}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg transition-transform hover:scale-105"
+                  className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white keep-text-white text-xs font-bold flex items-center gap-1.5 shadow-lg transition-transform hover:scale-105"
                 >
                   <MessageSquare className="w-4 h-4" /> WhatsApp Doctor Desk (+91 9981342401)
                 </a>
@@ -885,15 +819,15 @@ END:VCALENDAR`;
                 </a>
                 <a
                   href={`sms:+919981342401?body=${encodeURIComponent(getShareMessageText())}`}
-                  className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold flex items-center gap-1.5 transition-transform hover:scale-105"
+                  className="px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white keep-text-white text-xs font-bold flex items-center gap-1.5 shadow-lg transition-transform hover:scale-105"
                 >
                   <Send className="w-4 h-4" /> SMS Doctor (+91 9981342401)
                 </a>
                 <a
                   href={`mailto:pearlclinic.jbp@gmail.com?subject=${encodeURIComponent(`New Appointment: ${appointmentId} - ${formData.patientName}`)}&body=${encodeURIComponent(getShareMessageText())}`}
-                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-transform hover:scale-105 border border-slate-700"
+                  className="px-4 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white keep-text-white text-xs font-bold flex items-center gap-1.5 shadow-lg transition-transform hover:scale-105 border border-purple-400/40"
                 >
-                  <Mail className="w-4 h-4" /> Email Clinic Desk
+                  <Mail className="w-4 h-4 text-white" /> Email Clinic Desk
                 </a>
               </div>
             </div>
@@ -902,30 +836,14 @@ END:VCALENDAR`;
             <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
               <button
                 onClick={() => onNavigate("home")}
-                className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold cursor-pointer border border-slate-800"
+                className="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-semibold cursor-pointer border border-slate-800 shadow-md"
               >
                 Return to Dashboard
               </button>
 
-              <a
-                href={getGoogleCalendarUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-black shadow-lg shadow-sky-500/20 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
-              >
-                <Calendar className="w-4 h-4" /> Add to Google Calendar
-              </a>
-
-              <button
-                onClick={downloadIcsReminder}
-                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-600/20 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
-              >
-                <Clock className="w-4 h-4" /> Download .ICS Reminder
-              </button>
-
               <button
                 onClick={() => window.print()}
-                className="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black shadow-xl shadow-emerald-500/25 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
+                className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 text-xs font-black shadow-xl shadow-emerald-500/25 flex items-center gap-2 cursor-pointer transition-transform hover:scale-105"
               >
                 <Download className="w-4 h-4" /> Save / Print Pass PDF
               </button>

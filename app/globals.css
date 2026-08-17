@@ -254,9 +254,17 @@ html.light .bg-slate-900\/60 {
   background-color: #f1f5f9 !important;
 }
 
+html.light .bg-slate-800,
+html.light .bg-slate-800\/90,
+html.light .bg-slate-800\/80,
+html.light .bg-slate-800\/70 {
+  background-color: #e2e8f0 !important;
+}
+
 html.light .border-slate-800,
 html.light .border-slate-800\/80,
-html.light .border-slate-900 {
+html.light .border-slate-900,
+html.light .border-slate-700 {
   border-color: #cbd5e1 !important;
 }
 
@@ -288,6 +296,26 @@ html.light textarea::placeholder {
   color: #94a3b8 !important;
 }
 
+/* Force light/white text preservation inside dark elements in light mode */
+.keep-text-white,
+html.light .keep-text-white,
+html.light .receipt-dark-header .text-white,
+html.light .receipt-dark-footer .text-white {
+  color: #ffffff !important;
+}
+
+.keep-text-slate-200,
+html.light .keep-text-slate-200,
+html.light .receipt-dark-footer .text-slate-200 {
+  color: #e2e8f0 !important;
+}
+
+.keep-text-slate-300,
+html.light .keep-text-slate-300,
+html.light .receipt-dark-footer .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
 /* High Contrast Emergency Banner Fix for Light and Dark Modes */
 .emergency-banner,
 html.light .emergency-banner {
@@ -313,4 +341,5 @@ html.light .emergency-banner a,
 .emergency-banner a {
   color: #ffffff !important;
 }
+
 

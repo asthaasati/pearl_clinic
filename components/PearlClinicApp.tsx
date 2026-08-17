@@ -89,14 +89,14 @@ export function PearlClinicApp() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans placeholder-grid relative selection:bg-sky-500 selection:text-white">
       {/* Top Glass Header Navigation */}
-      <header className="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+      <header className="sticky top-0 z-40 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80 w-full overflow-hidden">
+        <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-1.5 sm:gap-3">
           {/* Brand Logo & Title with Full Form */}
           <div
             onClick={() => handleNavigate("home")}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer group min-w-0 shrink"
           >
-            <div className="relative w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1 group-hover:border-sky-500/50 transition-colors shrink-0">
+            <div className="relative w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1 group-hover:border-sky-500/50 transition-colors shrink-0">
               <Image
                 src="/logo.png"
                 alt="Pearl Clinic Logo"
@@ -106,11 +106,11 @@ export function PearlClinicApp() {
               />
             </div>
 
-            <div className="space-y-0.5">
-              <span className="font-black text-base sm:text-lg md:text-xl text-white tracking-tight shimmer-text whitespace-nowrap block">
+            <div className="space-y-0.5 min-w-0">
+              <span className="font-black text-xs sm:text-lg md:text-xl text-white tracking-tight shimmer-text whitespace-nowrap block">
                 PEARL CLINIC
               </span>
-              <p className="text-[10px] sm:text-[11px] text-sky-400 font-semibold tracking-wide whitespace-nowrap">
+              <p className="text-[8px] xs:text-[9px] sm:text-[11px] text-sky-400 font-semibold tracking-wide truncate max-w-[105px] min-[380px]:max-w-[150px] min-[480px]:max-w-none">
                 Paediatric Excellence And Respiratory Life
               </p>
             </div>
@@ -139,16 +139,16 @@ export function PearlClinicApp() {
           </nav>
 
           {/* Header Action Buttons */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
             {/* WhatsApp Header Button */}
             <a
               href="https://wa.me/919981342401"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-white border border-emerald-500/30 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
+              className="p-1.5 sm:px-3 sm:py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-white border border-emerald-500/30 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-md shrink-0"
               title="Chat on WhatsApp +91 9981342401"
             >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
               <span className="hidden sm:inline">+91 9981342401</span>
             </a>
 
@@ -157,7 +157,7 @@ export function PearlClinicApp() {
               onClick={toggleTheme}
               title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
               aria-label="Toggle Theme"
-              className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-md"
+              className="p-1.5 sm:p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-md shrink-0"
             >
               {theme === "dark" ? (
                 <Sun className="w-4 h-4 text-amber-400" />
@@ -169,17 +169,17 @@ export function PearlClinicApp() {
             {/* Emergency Phone Button */}
             <a
               href="tel:+919981342401"
-              className="px-3 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500 text-rose-400 hover:text-white border border-rose-500/30 text-xs font-bold transition-all flex items-center gap-1.5"
+              className="p-1.5 sm:px-3 sm:py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500 text-rose-400 hover:text-white border border-rose-500/30 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0"
               title="Call Helpline +91 9981342401"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <Phone className="w-4 h-4 shrink-0" />
               <span className="hidden md:inline">+91 9981342401</span>
             </a>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white cursor-pointer"
+              className="xl:hidden p-1.5 sm:p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white cursor-pointer shrink-0"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
