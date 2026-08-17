@@ -594,25 +594,25 @@ Clinic Email: pearlclinic.jbp@gmail.com`;
             {/* HIGHLIGHTED POP-UP / ALERT CALLOUT FOR DISPATCHING APPOINTMENT & SCREENSHOT REQUIREMENT */}
             <div className="space-y-3 print:hidden">
               {/* Dispatch Action Prompt */}
-              <div className="p-4.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-emerald-500/20 to-sky-500/20 border-2 border-emerald-500/50 shadow-xl space-y-2 text-left animate-pulse">
-                <div className="flex items-center gap-2 text-emerald-400 font-black text-sm uppercase tracking-wide">
-                  <AlertCircle className="w-5 h-5 text-amber-400 shrink-0" />
+              <div className="p-4 rounded-2xl bg-sky-50/90 dark:bg-sky-950/40 border-2 border-sky-500 shadow-xl space-y-2 text-left">
+                <div className="flex items-center gap-2 text-sky-600 dark:text-sky-400 font-black text-sm uppercase tracking-wide">
+                  <AlertCircle className="w-5 h-5 text-sky-500 shrink-0" />
                   <span>ACTION REQUIRED: CLICK BUTTONS BELOW TO SEND APPOINTMENT PASS</span>
                 </div>
-                <p className="text-xs text-slate-100 font-semibold leading-relaxed">
-                  Your appointment slot is reserved! <strong className="text-emerald-400 underline">Please click on the WhatsApp, SMS, or Email buttons below</strong> to immediately dispatch and send your booked appointment details to Doctor Desk & Patient phone!
+                <p className="text-xs text-slate-900 dark:text-slate-100 font-bold leading-relaxed">
+                  Your appointment slot is reserved! <strong className="text-sky-600 dark:text-sky-400 underline font-black">Please click on the WhatsApp, SMS, or Email buttons below</strong> to immediately dispatch and send your booked appointment details to Doctor Desk & Patient phone!
                 </p>
               </div>
 
-              {/* Hospital Receipt Screenshot / Print Warning */}
-              <div className="p-4 rounded-2xl bg-sky-500/10 border-2 border-sky-500/40 shadow-md flex items-start gap-3 text-left">
-                <CheckCircle2 className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
+              {/* Receipt Screenshot / Print Warning */}
+              <div className="p-4 rounded-2xl bg-sky-50/80 dark:bg-sky-950/30 border-2 border-sky-400/80 shadow-md flex items-start gap-3 text-left">
+                <CheckCircle2 className="w-5 h-5 text-sky-500 shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <h4 className="text-xs font-black text-sky-400 uppercase tracking-wider">
-                    📌 MANDATORY HOSPITAL / CLINIC VISIT INSTRUCTION
+                  <h4 className="text-xs font-black text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+                    📌 MANDATORY CLINIC VISIT INSTRUCTION
                   </h4>
-                  <p className="text-xs text-slate-200 font-semibold leading-relaxed">
-                    Please bring a <span className="bg-sky-500 text-white keep-text-white px-2 py-0.5 rounded font-extrabold shadow-sm">Screenshot</span> or <span className="bg-emerald-500 text-slate-950 px-2 py-0.5 rounded font-extrabold shadow-sm">Printed Copy</span> of this Appointment Confirmation Pass when visiting Pearl Clinic Hospital.
+                  <p className="text-xs text-slate-900 dark:text-slate-100 font-bold leading-relaxed">
+                    Please bring a <span className="bg-sky-600 text-white keep-text-white px-2 py-0.5 rounded font-extrabold shadow-sm">Screenshot</span> or <span className="bg-sky-700 text-white keep-text-white px-2 py-0.5 rounded font-extrabold shadow-sm">Printed Copy</span> of this Appointment Confirmation Pass when visiting Pearl Clinic.
                   </p>
                 </div>
               </div>
@@ -738,7 +738,7 @@ Clinic Email: pearlclinic.jbp@gmail.com`;
                 <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 text-left space-y-2 text-xs">
                   <h4 className="font-extrabold text-emerald-800 uppercase tracking-wider text-[11px]">IMPORTANT NOTES</h4>
                   <ul className="space-y-1.5 text-slate-700 text-[11px] leading-relaxed">
-                    <li>• 📸 <strong>MANDATORY:</strong> Please bring a screenshot or printout of this appointment confirmation receipt when coming to the hospital / clinic.</li>
+                    <li>• 📸 <strong>MANDATORY:</strong> Please bring a screenshot or printout of this appointment confirmation receipt when coming to Pearl Clinic.</li>
                     <li>• Please arrive 5-10 minutes prior to your slot time for smooth check-in.</li>
                     <li>• Carry any previous medical reports, prescriptions, or vaccination records if available.</li>
                     <li>• In case you need to reschedule or cancel, please inform clinic desk via WhatsApp or Call.</li>
